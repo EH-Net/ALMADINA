@@ -1,0 +1,66 @@
+﻿@model ALMADINA.Entity.FeeType
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FeeType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LevelOrClass.LevelOrClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LevelOrClass.LevelOrClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Section.SectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Section.SectionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeeTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeeTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FeeAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FeeAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ALMADINA.Entity.UserType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h5 class="m-0 font-weight-bold text-primary"> User Type</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+                <thead>
+                    <tr class="table-active">
+                        <th>SL</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserTypeName)
+                        </th>                       
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @{
+                    var index = 0;
+                }
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        index++;
+                        <tr>
+                            <td>@index</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserTypeName)
+                            </td>                           
+                            <td class="btn-group-sm">
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
