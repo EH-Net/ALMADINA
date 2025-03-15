@@ -145,7 +145,9 @@ else
                             <th>Fee </th>
                             <th>Fee Received </th>
                             <th>Full Or Partital Amount </th>
-                            <th>Status</th>
+                            <th>
+                                <input type="checkbox" class="form-check-input" id="Select_All" name="Select_All" /> Select All
+                            </th>
                         </tr>
                     </thead>
                     @{
@@ -174,7 +176,7 @@ else
                                         <input type="text" placeholder="00.0" class="form-control" name="" onchange="Cal(this);" />
                                     </td>
                                     <td>
-                                        <input type="checkbox" id="amountSet" />
+                                        <input type="checkbox" class="form-check-input" value="@item.Id" id="Select_One" name="Select_One" />
                                     </td>
                                 </tr>
                             }
@@ -282,13 +284,46 @@ else
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-      
-        $("#FinalSub").on("click", function ()
-        {
-            alert("Change amount 0.00");
-            
+
+        $('#Select_All').on('click', function () {
+            let checkboxes = document.getElementByTagName('input');
+            let val = null;
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].type == 'checkbox') {
+                    if (val == nul) {
+                        val = checkboxes[i].checked;
+
+                    } else {
+                        checkboxes[i].checked = val;
+                    }
+                }
+            }
+        });
+        $('#Select_One').on('click', function () {
+            let val = [];
+            $(':checkbox:checked').each(function (i) {
+                val[i] = $(this).val();
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '/FeesRegister/DailyFeeCollection',
+                data: 'ids:val',
+                success: function (response) {
+                    if (response = 'success') {
+                        location.reload();
+                    }
+                   
+                },
+                error: function () {
+                    
+
+                }
+            })
+
         });
     });
+    
 
 </script>
 
